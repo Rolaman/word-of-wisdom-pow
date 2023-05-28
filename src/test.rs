@@ -34,8 +34,8 @@ mod test {
         let server = Server::new(address, book_service);
 
         //prep
-        let server_handle = std::thread::spawn(move || {
-            server.start();
+        let _server_handle = std::thread::spawn(move || {
+            server.start().expect("Error while starting server");
         });
         std::thread::sleep(std::time::Duration::from_secs(1));
 
