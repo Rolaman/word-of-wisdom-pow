@@ -1,0 +1,27 @@
+[package]
+name = "word_of_wisdom_pow"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "client"
+path = "src/client_run.rs"
+
+[[bin]]
+name = "server"
+path = "src/server_run.rs"
+
+[dependencies]
+rand = "0.8.5"
+chrono = "0.4.24"
+sha2 = "0.10.6"
+log = "0.4.18"
+thiserror = "1.0.40"
+env_logger = "0.10.0"
+
+[dev-dependencies]
+criterion = "0.5.0"
+
+[[bench]]
+name = "pow_benchmark"
+harness = false

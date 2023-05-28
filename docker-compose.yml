@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  server:
+    image: rust:1.69.0
+    volumes:
+      - ./:/server
+    working_dir: /server
+    command: 'cargo run --bin server'
+    environment:
+      - HOST=0.0.0.0:8001
+      - RUST_LOG=info
+  client:
+    image: rust:1.69.0
+    volumes:
+      - ./:/client
+    working_dir: /client
+    command: 'cargo run --bin client'
+    depends_on:
+      - server
+    links:
+      - server
+    environment:
+      - HOST=server:8001
+      - RUST_LOG=info
